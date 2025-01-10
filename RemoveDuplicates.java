@@ -45,11 +45,16 @@ public class RemoveDuplicates{
                                         break;
                                 }
 
-                               int itrV1 = (i+1);
+                                int itrV1 = (i+1);
 
-                               while((itrV1 + count) < len){
+                                while((itrV1 + count) < len){
                                         nums[itrV1] = nums[itrV1+count];      //Move all the elements down by count.
                                         itrV1 += 1;                       //Increment itrV1 to keep looping.
+                                }
+
+                                if(itrV1 == (len-1)){
+                                        len -= 1; 
+                                        break;
                                 }
 
                                 len -= count;       //Account for the elements I have removed/deleted.
@@ -64,7 +69,7 @@ public class RemoveDuplicates{
          */
         public static void main(String[] args){
                 
-                int[] testArr = {1, 3, 4, 5, 5, 5, 6, 7, 8, 8, 8, 9, 10};    //Create test data.
+                int[] testArr = {1, 1, 2};    //Create test data.
 
                 RemoveDuplicates tmpObj = new RemoveDuplicates();     //Create instance of class for testing.
 
