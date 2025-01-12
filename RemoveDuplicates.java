@@ -4,7 +4,7 @@
  * Author: Nick Burkett.
  * Date: 1/6/2025
  *
- * Status: WIP
+ * Status: SOLVED
  */
 public class RemoveDuplicates{
         
