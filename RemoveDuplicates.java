@@ -16,52 +16,26 @@ public class RemoveDuplicates{
          */
         public int removeDuplicates(int[] nums){
                 
-                int len = nums.length;      //Need to save a var of nums.length to alter after I delete. 
+                if (nums.length == 0) {
+                        return 0;
+                }
 
-                //Need to loop through the array nums.
-                for(int i = 0; i < len; i++){
-                        
-                        //Need to check if I have encountered a duplicate.
-                        if(nums[i] == nums[i+1]){
+                //InsertPos is where we will place the next unique number
+                int insertPos = 1;
 
-                                int count = 1;      //Set a counter var to keep track of the # of duplicates.
-                                int itr = (i+1);    //Set a iterator that I will check for more duplicates after i.
+                //Go through the array starting at index 1
+                for (int i = 1; i < nums.length; i++) {
 
-                                //Need to check how many duplicates there are.
-                                while(nums[itr] == nums[itr+1]){
-                                        count += 1;     //Increment count.
-                                        itr += 1;       //Increment itr to keep counting.
-
-                                        //Here I check if we are about to increment to the last value in the array
-                                        if(itr >= (len-1)){
-                                                break;
-                                        }
-                                }
-
-                                //Before I go ahead and start shifting items down, I need to check if I am duplicating to the end.
-                                if((i + count) >= len){
-                                        //If I end up in here, the rest of the duplicated array is at the end, so I don't need to do anything.
-                                        len -= count; 
-                                        break;
-                                }
-
-                                int itrV1 = (i+1);
-
-                                while((itrV1 + count) < len){
-                                        nums[itrV1] = nums[itrV1+count];      //Move all the elements down by count.
-                                        itrV1 += 1;                       //Increment itrV1 to keep looping.
-                                }
-
-                                if(itrV1 == (len-1)){
-                                        len -= 1; 
-                                        break;
-                                }
-
-                                len -= count;       //Account for the elements I have removed/deleted.
+                        //If current number is different from the previous number,
+                        //This is a new unique element.
+                        if (nums[i] != nums[i - 1]) {
+                                nums[insertPos] = nums[i];
+                                insertPos++;
                         }
                 }
 
-                return len;    //Return the # of elements in the array - the duplicates.
+                //InsertPos is the count of unique elements
+                return insertPos;
         }
 
         /*
@@ -69,7 +43,7 @@ public class RemoveDuplicates{
          */
         public static void main(String[] args){
                 
-                int[] testArr = {1, 1, 2};    //Create test data.
+                int[] testArr = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};    //Create test data.
 
                 RemoveDuplicates tmpObj = new RemoveDuplicates();     //Create instance of class for testing.
 
